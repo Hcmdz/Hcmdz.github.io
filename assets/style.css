@@ -58,17 +58,32 @@ a:hover { text-decoration: underline; }
 /* ---------- Hero ---------- */
 .hero {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 5vw, 3rem);
   align-items: start;
-  padding: 2rem 0 3rem;
+  padding: 2.5rem 0 3rem;
 }
+
+.hero > .hero-copy { order: 1; }
+.hero > .hero-media { order: 2; }
 
 .hero-media {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+}
+
+/* Pills in the home/profile hero stack vertically under the avatar */
+.profile-hero .hero-media .nav {
+  flex-direction: column;
+  align-items: stretch;
+  width: min(16rem, 100%);
+  margin-top: 0.25rem;
+}
+
+.profile-hero .hero-media .pill {
+  justify-content: center;
 }
 
 .avatar {
@@ -317,29 +332,44 @@ section > h2, .section-title {
   line-height: 1.4;
 }
 
-/* ---------- Lightbox ---------- */
+/* ---------- Lightbox (native <dialog>) ---------- */
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(5, 10, 7, 0.92);
-  display: none;
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 2rem;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: 2rem;
+  overflow: hidden;
 }
 
-.lightbox.open { display: flex; }
+.lightbox[open] {
+  display: flex;
+}
 
-.lightbox img {
+.lightbox::backdrop {
+  background: rgba(5, 10, 7, 0.92);
+}
+
+.lightbox-image {
+  display: block;
   max-width: min(92vw, 1100px);
   max-height: 92vh;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-lg);
+  background: #000;
 }
 
 .lightbox-close {
-  position: absolute;
+  position: fixed;
   top: 1.25rem;
   right: 1.5rem;
   background: none;
@@ -349,6 +379,7 @@ section > h2, .section-title {
   line-height: 1;
   cursor: pointer;
   opacity: 0.85;
+  padding: 0.25rem 0.6rem;
 }
 
 .lightbox-close:hover { opacity: 1; }
@@ -475,4 +506,16 @@ section > h2, .section-title {
 
   .archive-card { flex-direction: column; text-align: center; }
   .archive-mosaic img { width: 120px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
