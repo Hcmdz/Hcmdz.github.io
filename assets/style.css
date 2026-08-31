@@ -303,6 +303,31 @@ section > h2, .section-title {
   text-decoration: none;
 }
 
+.projects-section .card::after {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--accent-strong);
+  content: "Open project \2192";
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translateY(0.35rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.projects-section .card:hover,
+.projects-section .card:focus-visible {
+  box-shadow: 0 1.35rem 3.5rem rgb(0 0 0 / 18%), 0 0 2rem color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.projects-section .card:hover::after,
+.projects-section .card:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .card-header { display: flex; align-items: center; gap: 0.9rem; }
 
 .card-logo {
