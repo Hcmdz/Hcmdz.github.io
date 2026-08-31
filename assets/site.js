@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  /* Mobile menu: close details when clicking outside or pressing Escape */
+  /* ---- Mobile menu: close on outside click or Escape ---- */
   var mobileMenus = Array.prototype.slice.call(
     document.querySelectorAll(".mobile-site-menu")
   );
@@ -30,62 +30,100 @@
     });
   }
 
-  /* Screenshot lightbox: native <dialog> with keyboard navigation */
-  var dialog = document.querySelector(".lightbox");
-  if (!(dialog instanceof HTMLDialogElement)) return;
+  /* ---- Lazy-load heavy images ---- */
+  Array.prototype.forEach.call(
+    document.querySelectorAll(
+      ".screenshot-button img, .card-logo, .app-logo, .avatar"
+    ),
+    function (img) {
+      img.setAttribute("loading", "lazy");
+      img.setAttribute("decoding", "async");
+    }
+  );
 
-  var dialogImage = dialog.querySelector(".lightbox-image");
-  var closeBtn = dialog.querySelector(".lightbox-close");
-  if (!dialogImage) return;
-
+  /* ---- Screenshot lightbox as a native <dialog> ---- */
   var buttons = Array.prototype.slice.call(
     document.querySelectorAll(".screenshot-button")
   );
   if (!buttons.length) return;
 
-  var activeButton = null;
-  var activeIndex = -1;
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  function getCaption(btn) {
-    var figure = btn.closest("figure");
-    var figcaption = figure && figure.querySelector("figcaption");
-    if (figcaption && figcaption.textContent.trim()) {
-      return figcaption.textContent.trim();
-    }
-    var img = btn.querySelector("img");
+  var dialog = document.createElement("dialog");
+  dialog.className = "image-dialog";
+  dialog.setAttribute("aria-label", "Expanded screenshot");
+  dialog.setAttribute("tabindex", "-1");
+  dialog.innerHTML =
+    '<div class="image-dialog-inner">' +
+    '  <img class="dialog-image" alt="">' +
+    '  <p class="dialog-caption"></p>' +
+    "</div>";
+  document.body.appendChild(dialog);
+
+  var dialogImage = dialog.querySelector(".dialog-image");
+  var dialogCaption = dialog.querySelector(".dialog-caption");
+
+  function captionFor(button) {
+    var figure = button.closest("figure");
+    var fig = figure && figure.querySelector("figcaption");
+    if (fig && fig.textContent.trim()) return fig.textContent.trim();
+    var img = button.querySelector("img");
     return img ? (img.getAttribute("alt") || "").trim() : "";
   }
 
-  function getSrc(btn) {
-    var img = btn.querySelector("img");
+  function srcFor(button) {
+    var img = button.querySelector("img");
     return img ? img.getAttribute("src") || "" : "";
   }
 
-  function updateDialog(btn) {
-    var caption = getCaption(btn);
-    dialogImage.src = getSrc(btn);
+  function updateDialog(button) {
+    var caption = captionFor(button);
+    dialogImage.src = srcFor(button);
     dialogImage.alt = caption || "Expanded screenshot";
+    dialogCaption.textContent = caption;
   }
 
-  function openAt(btn) {
-    activeButton = btn;
-    activeIndex = buttons.indexOf(btn);
-    updateDialog(btn);
-    if (typeof dialog.showModal === "function") {
+  var activeButton = null;
+  var activeIndex = -1;
+  var swapTimer = null;
+
+  function syncDialogWidth() {
+    if (!dialog.open) return;
+    var w = dialogImage.getBoundingClientRect().width;
+    if (w > 0) {
+      dialog.style.setProperty("--dialog-media-width", Math.ceil(w) + "px");
+    }
+  }
+
+  function withTransition(update) {
+    if (!document.startViewTransition || reducedMotion.matches) {
+      update();
+      return Promise.resolve();
+    }
+    return document.startViewTransition(update).finished.catch(function () {});
+  }
+
+  function clearMorphNames() {
+    if (activeButton) {
+      var t = activeButton.querySelector("img");
+      if (t) t.style.viewTransitionName = "";
+    }
+    dialogImage.style.viewTransitionName = "";
+  }
+
+  function openScreenshot(button) {
+    activeButton = button;
+    var thumb = button.querySelector("img");
+    activeIndex = buttons.indexOf(button);
+    if (thumb) thumb.style.viewTransitionName = "screenshot-morph";
+
+    withTransition(function () {
+      updateDialog(button);
+      dialogImage.style.viewTransitionName = "screenshot-morph";
+      if (thumb) thumb.style.viewTransitionName = "";
       dialog.showModal();
-    } else {
-      dialog.setAttribute("open", "");
-    }
-  }
-
-  function close() {
-    if (typeof dialog.close === "function") {
-      dialog.close();
-    } else {
-      dialog.removeAttribute("open");
-    }
-    activeButton = null;
-    activeIndex = -1;
+      syncDialogWidth();
+    }).then(function () { dialog.focus(); });
   }
 
   function cycle(direction) {
@@ -93,27 +131,58 @@
     var next = (activeIndex + direction + buttons.length) % buttons.length;
     activeIndex = next;
     activeButton = buttons[next];
-    updateDialog(activeButton);
+    var thumb = activeButton.querySelector("img");
+
+    if (swapTimer) window.clearTimeout(swapTimer);
+    if (reducedMotion.matches) {
+      updateDialog(activeButton);
+      return;
+    }
+
+    dialogImage.classList.add("is-switching");
+    dialogCaption.classList.add("is-switching");
+    swapTimer = window.setTimeout(function () {
+      updateDialog(activeButton);
+      window.requestAnimationFrame(function () {
+        dialogImage.classList.remove("is-switching");
+        dialogCaption.classList.remove("is-switching");
+      });
+      swapTimer = null;
+    }, 140);
   }
 
-  buttons.forEach(function (btn) {
-    btn.addEventListener("click", function () { openAt(btn); });
-  });
+  function closeScreenshot() {
+    if (!dialog.open) return;
+    if (swapTimer) {
+      window.clearTimeout(swapTimer);
+      swapTimer = null;
+    }
+    dialogImage.classList.remove("is-switching");
+    dialogCaption.classList.remove("is-switching");
 
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-      close();
+    withTransition(function () {
+      var thumb = activeButton && activeButton.querySelector("img");
+      if (thumb) thumb.style.viewTransitionName = "screenshot-morph";
+      dialog.close();
+      dialog.style.removeProperty("--dialog-media-width");
+    }).then(function () {
+      clearMorphNames();
+      if (activeButton) activeButton.focus();
+      activeButton = null;
+      activeIndex = -1;
     });
   }
 
-  /* Click on backdrop closes the dialog */
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () { openScreenshot(button); });
+  });
+
   dialog.addEventListener("click", function (event) {
-    var rect = dialog.getBoundingClientRect();
-    var inside =
-      event.clientX >= rect.left && event.clientX <= rect.right &&
-      event.clientY >= rect.top && event.clientY <= rect.bottom;
-    if (!inside) close();
+    if (event.target === this) closeScreenshot();
+  });
+  dialog.addEventListener("cancel", function (event) {
+    event.preventDefault();
+    closeScreenshot();
   });
 
   document.addEventListener("keydown", function (event) {
@@ -127,5 +196,10 @@
     }
   });
 
-  /* Native cancel (ESC) just closes — no preventDefault */
+  dialogImage.addEventListener("load", function () {
+    window.requestAnimationFrame(syncDialogWidth);
+  });
+  window.addEventListener("resize", function () {
+    window.requestAnimationFrame(syncDialogWidth);
+  });
 })();

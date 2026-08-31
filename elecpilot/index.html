@@ -14,13 +14,16 @@
   <meta property="og:title" content="ElecPilot — Electrical Engineering App for Android">
   <meta property="og:description" content="Professional Android app for managing motor starters and PLC I/O modules, with cloud backup and Excel/CSV import/export.">
   <meta property="og:url" content="https://Hcmdz.github.io/elecpilot/">
-  <meta property="og:image" content="https://Hcmdz.github.io/elecpilot/logo.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://Hcmdz.github.io/elecpilot/og.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta property="og:image:alt" content="ElecPilot — electrical engineering apps for Android">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ElecPilot">
   <meta name="twitter:description" content="Professional Android app for managing motor starters and PLC I/O modules.">
-  <meta name="twitter:image" content="https://Hcmdz.github.io/elecpilot/logo.png">
-  <link rel="stylesheet" href="../assets/style.css">
-  <script src="../assets/site.js" defer></script>
+  <meta name="twitter:image" content="https://Hcmdz.github.io/elecpilot/og.png">
+  <link rel="stylesheet" href="../assets/style.css?v=2">
+  <script src="../assets/site.js?v=3" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -39,11 +42,11 @@
     }
   </script>
 </head>
-<body>
+<body class="theme-elecpilot">
   <main class="site-shell">
     <nav class="nav page-nav desktop-site-nav" aria-label="Site">
       <a class="pill" href="../">Home</a>
-      <span class="pill" aria-current="page">ElecPilot</span>
+      <span class="pill primary" aria-current="page">ElecPilot</span>
       <a class="pill" href="https://github.com/Hcmdz/ElecPilot" target="_blank" rel="noopener">GitHub</a>
     </nav>
     <details class="mobile-site-menu">
@@ -59,12 +62,12 @@
       </div>
     </details>
 
-    <section class="hero">
+    <section class="hero project-hero">
       <div class="hero-media">
         <img class="app-logo" src="logo.png" alt="ElecPilot app logo" loading="lazy" decoding="async">
         <nav class="nav" aria-label="ElecPilot links">
-          <a class="pill primary" href="https://github.com/Hcmdz/ElecPilot" target="_blank" rel="noopener">GitHub</a>
-          <a class="pill" href="https://github.com/Hcmdz/ElecPilot/releases/latest" target="_blank" rel="noopener">Releases</a>
+          <a class="pill primary" href="https://github.com/Hcmdz/ElecPilot" target="_blank" rel="noopener"><img class="pill-icon" src="../assets/fav_github.png" alt="" aria-hidden="true">GitHub</a>
+          <a class="pill secondary-strong" href="https://github.com/Hcmdz/ElecPilot/releases/latest" target="_blank" rel="noopener"><img class="pill-icon" src="../assets/fav_github.png" alt="" aria-hidden="true">Releases</a>
         </nav>
       </div>
       <div class="hero-copy">
@@ -92,46 +95,46 @@
 
     <section class="feature-grid" aria-label="ElecPilot features">
       <article class="feature-card">
-        <h3>🔧 Motor Starters</h3>
+        <h3>Motor Starters</h3>
         <p>Full CRUD, search, batch edit, and statistics for motor starter records.</p>
       </article>
       <article class="feature-card">
-        <h3>⚙️ PLC I/O Modules</h3>
+        <h3>PLC I/O Modules</h3>
         <p>Dedicated database and views for PLC I/O modules, kept separate and clean.</p>
       </article>
       <article class="feature-card">
-        <h3>☁️ Cloud Backup</h3>
+        <h3>Cloud Backup</h3>
         <p>Google Drive &amp; OneDrive via rclone, with AES-256-GCM encrypted config.</p>
       </article>
       <article class="feature-card">
-        <h3>📄 Excel/CSV</h3>
+        <h3>Excel/CSV</h3>
         <p>Import/export, blank template generation, and scheduled local backups.</p>
       </article>
       <article class="feature-card">
-        <h3>🎨 Material You</h3>
+        <h3>Material You</h3>
         <p>Dynamic color, edge-to-edge layout, and light &amp; dark themes.</p>
       </article>
       <article class="feature-card">
-        <h3>🌍 Multilingual</h3>
+        <h3>Multilingual</h3>
         <p>English, French, and Arabic localization with full RTL support.</p>
       </article>
       <article class="feature-card">
-        <h3>🎙️ Voice Search</h3>
+        <h3>Voice Search</h3>
         <p>Speak to filter motor starters hands-free.</p>
       </article>
       <article class="feature-card">
-        <h3>🔒 Security</h3>
+        <h3>Security</h3>
         <p>FLAG_SECURE, encrypted storage, WebView allowlist, ProGuard log stripping.</p>
       </article>
     </section>
 
     <div class="read-more-row">
-      <a class="pill read-more-button" href="https://github.com/Hcmdz/ElecPilot/blob/main/README.md" target="_blank" rel="noopener">View full README <span aria-hidden="true">→</span></a>
+      <a class="pill read-more-button" href="https://github.com/Hcmdz/ElecPilot/blob/main/README.md" target="_blank" rel="noopener"><img class="pill-icon" src="../assets/fav_github.png" alt="" aria-hidden="true">View full README<span aria-hidden="true">→</span></a>
     </div>
 
     <section class="screenshot-section" aria-labelledby="screenshots-title">
       <h2 id="screenshots-title">Screenshots</h2>
-      <div class="screenshot-grid app-screenshot-grid">
+      <div class="screenshot-grid freeform app-screenshot-grid">
         <figure class="screenshot-card">
           <button class="screenshot-button">
             <img src="screenshots/motor-list-table-view-light.png" alt="Motor starters — table view, light mode" loading="lazy" decoding="async">
@@ -194,11 +197,6 @@
         </figure>
       </div>
     </section>
-
-    <dialog class="lightbox" aria-label="Screenshot preview">
-      <button class="lightbox-close" aria-label="Close" type="button">×</button>
-      <img class="lightbox-image" src="" alt="">
-    </dialog>
 
     <footer class="site-footer">
       Made with ❤️ by <a href="../">HcmDZ</a>
