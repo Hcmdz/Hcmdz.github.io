@@ -334,25 +334,21 @@ section > h2, .section-title {
 
 /* ---------- Lightbox (native <dialog>) ---------- */
 .lightbox {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  max-width: none;
-  height: 100vh;
-  max-height: none;
   margin: 0;
   padding: 2rem;
   background: transparent;
   border: 0;
   color: inherit;
+}
+
+.lightbox[open] {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
-
-.lightbox[open] {
-  display: flex;
 }
 
 .lightbox::backdrop {
