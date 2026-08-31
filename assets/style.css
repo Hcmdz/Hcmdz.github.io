@@ -391,6 +391,30 @@ section > h2, .section-title {
   font-size: 0.95rem;
 }
 
+/* ---------- Focus list (About Me) ---------- */
+.focus-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.focus-list li {
+  padding: 0.7rem 0.95rem;
+  background: var(--surface-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: 0.96rem;
+  color: var(--text);
+}
+
+.focus-list li strong { color: var(--accent-strong); }
+
+.content-card p + .focus-list { margin-top: 1.25rem; }
+.focus-list + p { margin-top: 1rem; color: var(--text-muted); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
   .site-shell { padding: 1.5rem 1rem 2.5rem; }
