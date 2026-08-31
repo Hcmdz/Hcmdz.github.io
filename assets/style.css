@@ -241,6 +241,14 @@ a:hover { text-decoration: underline; }
   border-radius: var(--radius);
   padding: 1.5rem 1.75rem;
   box-shadow: var(--shadow);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+.content-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  background: color-mix(in srgb, var(--surface) 96%, var(--accent-soft));
+  box-shadow: 0 0.8rem 2rem rgb(0 0 0 / 10%), 0 0 1rem color-mix(in srgb, var(--accent) 8%, transparent);
+  transform: translateY(-0.1rem);
 }
 
 .content-card h2 { margin: 0 0 0.75rem; font-size: 1.25rem; }
