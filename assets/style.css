@@ -327,6 +327,14 @@ section > h2, .section-title {
   border-radius: var(--radius);
   padding: 1.4rem 1.5rem;
   box-shadow: var(--shadow);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+.feature-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+  background: color-mix(in srgb, var(--surface) 95%, var(--accent-soft));
+  box-shadow: 0 0.9rem 2.2rem rgb(0 0 0 / 11%), 0 0 1.1rem color-mix(in srgb, var(--accent) 9%, transparent);
+  transform: translateY(-0.12rem);
 }
 
 .feature-card h3 {
