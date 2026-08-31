@@ -294,8 +294,8 @@ section > h2, .section-title {
 
 .screenshot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .screenshot-card {
@@ -307,25 +307,36 @@ section > h2, .section-title {
   box-shadow: var(--shadow);
 }
 
-.screenshot-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 520px;
-  object-fit: cover;
-}
-
 .screenshot-button {
   display: block;
   width: 100%;
   padding: 0;
   border: 0;
   background: none;
-  cursor: pointer;
   line-height: 0;
 }
 
-.screenshot-card figcaption {
+/* Phone screenshot row (project pages): uniform 9:19.5 cards, no cropping */
+.screenshot-grid.app-screenshot-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.screenshot-grid.app-screenshot-grid .screenshot-card {
+  max-height: none;
+}
+
+.screenshot-grid.app-screenshot-grid .screenshot-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.screenshot-grid.app-screenshot-grid figcaption {
   padding: 0.6rem 0.9rem;
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -502,6 +513,23 @@ section > h2, .section-title {
 
   .archive-card { flex-direction: column; text-align: center; }
   .archive-mosaic img { width: 120px; }
+
+  .screenshot-grid.app-screenshot-grid {
+    display: flex;
+    gap: 1rem;
+    margin-inline: -1rem;
+    padding: 0 1rem 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+  }
+
+  .screenshot-grid.app-screenshot-grid .screenshot-card {
+    flex: 0 0 min(78vw, 20rem);
+    scroll-snap-align: center;
+  }
+
+  .screenshot-grid.app-screenshot-grid .screenshot-button { cursor: pointer; }
 }
 
 /* ---------- Reduced motion ---------- */
