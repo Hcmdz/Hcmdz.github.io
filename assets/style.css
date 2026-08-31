@@ -116,6 +116,18 @@ a:hover { text-decoration: underline; }
   justify-content: center;
 }
 
+/* Pills in the project hero stack vertically under the logo */
+.project-hero .hero-media .nav {
+  flex-direction: column;
+  align-items: stretch;
+  width: min(16rem, 100%);
+  margin-top: 0.25rem;
+}
+
+.project-hero .hero-media .pill {
+  justify-content: center;
+}
+
 .avatar {
   width: 150px;
   height: 150px;
