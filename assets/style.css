@@ -378,7 +378,15 @@ section > h2, .section-title {
   border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: var(--shadow);
+  transition: box-shadow 180ms ease, transform 180ms ease;
 }
+
+.screenshot-card:hover {
+  box-shadow: 0 1.1rem 2.75rem rgb(0 0 0 / 14%), 0 0 1.6rem color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateY(-0.18rem);
+}
+
+.screenshot-card:hover .screenshot-button > img { transform: scale(1.025); }
 
 .screenshot-button {
   display: block;
@@ -407,6 +415,7 @@ section > h2, .section-title {
   aspect-ratio: 9 / 19.5;
   object-fit: cover;
   object-position: top center;
+  transition: transform 180ms ease;
 }
 
 .screenshot-grid.app-screenshot-grid figcaption {
