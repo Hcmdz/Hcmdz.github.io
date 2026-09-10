@@ -1,0 +1,42 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No secret values in tree
+        run: |
+          # Reviewed false positives live in .github/secret-allowlist.txt
+          # (exact fixed strings, currently empty). Anything else FAILS.
+          ! grep -rEn "sk-ant-[A-Za-z0-9_-]{8,}|ghp_[A-Za-z0-9]{20,}|gho_[A-Za-z0-9]{20,}|glpat-[A-Za-z0-9_-]{8,}|xox[bap]-[A-Za-z0-9-]{8,}|sk_live_[A-Za-z0-9]{8,}|AIza[A-Za-z0-9_-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|https?://[^/ \"'()]*:[^/ \"'()]*@" \
+            --include="*.html" --include="*.css" --include="*.js" --include="*.json" --include="*.xml" --include="*.txt" --include="*.md" . \
+            | grep -vF -f .github/secret-allowlist.txt \
+            | grep -q .
+          echo "secret scan clean"
+      - name: No sensitive filenames tracked
+        run: |
+          ! git ls-files \
+            | grep -iE "(^|/)\.env(\.|$)|^id_rsa$|\.pem$|\.key$|\.p12$|\.keystore$" \
+            | grep -q .
+          echo "filenames clean"
+      - name: Basic HTML sanity
+        run: |
+          test -f index.html && grep -q "</html>" index.html && echo "index.html OK"
+      - name: Allowlist entries still needed
+        run: |
+          # Every allowlist entry must match >=1 tree file (excluding itself),
+          # or it is dead weight to remove.
+          fail=0
+          grep -v '^#' .github/secret-allowlist.txt | grep -v '^$' | while IFS= read -r pat; do
+            [ -n "$pat" ] || continue
+            if ! grep -rFq -- "$pat" --exclude-dir=.git --exclude=secret-allowlist.txt . ; then
+              echo "DEAD allowlist entry: $pat"; exit 1
+            fi
+          done || fail=1
+          [ $fail -eq 0 ] && echo "allowlist needed"

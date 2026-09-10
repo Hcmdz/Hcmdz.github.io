@@ -1,3 +1,21 @@
-node_modules/
-*.log
+# Secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# OS / editor
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Deps / build (regenerated)
+node_modules/
