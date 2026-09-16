@@ -848,6 +848,39 @@ section > h2, .section-title {
 
 .home-footer-note { color: var(--text-muted); font-size: 0.85rem; }
 
+.home-badge-row { margin: 0.6rem 0 0; }
+
+.home-marquee {
+  position: relative;
+  overflow: hidden;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.home-marquee::before,
+.home-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-marquee::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+.home-marquee::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+
+.home-marquee-track {
+  display: flex;
+  gap: 0.5rem;
+  width: max-content;
+  animation: home-scroll 32s linear infinite;
+}
+
+.home-marquee-dup { display: contents; }
+
+@keyframes home-scroll { to { transform: translateX(-50%); } }
+
 @media (max-width: 480px) {
   .home-stats { grid-template-columns: repeat(2, 1fr); }
 }
