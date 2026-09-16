@@ -65,6 +65,36 @@ body.theme-elecpilot {
   }
 }
 
+/* OpenCode Free Radar project theme (radar-green identity, inherits the site palette) */
+body.theme-ofr {
+  --bg: #f2f6f2;
+  --bg-soft: #e8ede9;
+  --surface: #ffffff;
+  --surface-soft: #dfe8e1;
+  --text: #0e1a12;
+  --text-muted: #45614f;
+  --accent: #137333;
+  --accent-strong: #0e5c29;
+  --accent-soft: #d7ecdc;
+  --border: #d3e2d7;
+  --shadow: 0 6px 24px rgba(16, 60, 34, 0.08);
+  --shadow-lg: 0 12px 40px rgba(16, 60, 34, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  body.theme-ofr {
+    --bg: #0c140f;
+    --surface: #141f18;
+    --surface-soft: #182720;
+    --text: #e4f1e9;
+    --text-muted: #9cb4a3;
+    --accent: #35d066;
+    --accent-strong: #5ce58a;
+    --accent-soft: #123120;
+    --border: #22342a;
+  }
+}
+
 html { scroll-behavior: smooth; }
 
 body {
