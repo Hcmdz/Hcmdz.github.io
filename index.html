@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="HcmDZ — Android Developer">
   <meta name="twitter:description" content="Android developer crafting apps with Kotlin &amp; Jetpack Compose. Explore ElecPilot and OpenCode Free Radar.">
   <meta name="twitter:image" content="https://Hcmdz.github.io/assets/avatar.png">
-  <link rel="stylesheet" href="assets/style.css?v=8">
+  <link rel="stylesheet" href="assets/style.css?v=9">
   <script src="assets/site.js?v=3" defer></script>
   <script type="application/ld+json">
     {
@@ -48,14 +48,21 @@
       <div class="hero-copy">
         <h1>HcmDZ</h1>
         <p class="profile-tagline">Building Android apps that ship — with reliability, security, and polish built in.</p>
+        <p class="home-terminal" aria-hidden="true"><span>&gt; </span><span id="home-typing">code()</span><span class="home-caret">▍</span></p>
         <div class="chip-row" aria-label="Platforms">
           <span class="meta-chip">Android</span>
           <span class="meta-chip">Linux</span>
           <span class="meta-chip">Windows</span>
-          <span class="meta-chip">Kotlin</span>
-          <span class="meta-chip">Jetpack Compose</span>
           <span class="meta-chip">Material 3</span>
           <span class="meta-chip">Security</span>
+        </div>
+        <div class="chip-row home-stack" aria-label="Stack">
+          <span class="meta-chip">Kotlin</span>
+          <span class="meta-chip">Jetpack Compose</span>
+          <span class="meta-chip">Room</span>
+          <span class="meta-chip">Ktor</span>
+          <span class="meta-chip">WorkManager</span>
+          <span class="meta-chip">Rclone</span>
         </div>
         <section class="content-card">
           <h2>How I Build</h2>
@@ -78,6 +85,13 @@
       </div>
     </section>
 
+    <section class="home-stats" aria-label="Highlights">
+      <div class="home-stat"><strong>2</strong><span>Android apps shipped</span></div>
+      <div class="home-stat"><strong>EN · FR · AR</strong><span>Localised, RTL-ready</span></div>
+      <div class="home-stat"><a href="https://github.com/Hcmdz/ElecPilot/releases" target="_blank" rel="noopener"><img src="https://img.shields.io/github/v/release/Hcmdz/ElecPilot?label=ElecPilot&color=00D117" alt="ElecPilot release" loading="lazy"></a></div>
+      <div class="home-stat"><a href="https://github.com/Hcmdz/OpenCode-Free-Radar/releases" target="_blank" rel="noopener"><img src="https://img.shields.io/github/v/release/Hcmdz/OpenCode-Free-Radar?label=Radar&color=00D117" alt="Radar release" loading="lazy"></a></div>
+    </section>
+
     <section class="projects-section" aria-labelledby="projects-title">
       <h2 id="projects-title">Projects</h2>
       <div class="grid">
@@ -92,6 +106,12 @@
             Professional Android app for managing electrical motor starters and PLC I/O modules in industrial
             environments — with cloud backup, Excel/CSV import/export, and Material You design.
           </p>
+          <div class="home-card-meta">
+            <img src="https://img.shields.io/github/actions/workflow/status/Hcmdz/ElecPilot/ci.yml?label=CI&color=00D117" alt="ElecPilot CI" loading="lazy">
+            <span class="meta-chip">Room</span>
+            <span class="meta-chip">Rclone</span>
+            <span class="meta-chip">CSV</span>
+          </div>
         </a>
         <a class="card" href="opencode-free-radar/">
           <div class="card-header">
@@ -104,6 +124,12 @@
             Native Android app that tracks AI models free to use with OpenCode and notifies you when new free
             offers appear — usable-free statuses, favorites, and freebie alerts.
           </p>
+          <div class="home-card-meta">
+            <img src="https://img.shields.io/github/actions/workflow/status/Hcmdz/OpenCode-Free-Radar/ci.yml?label=CI&color=00D117" alt="Radar CI" loading="lazy">
+            <span class="meta-chip">Ktor</span>
+            <span class="meta-chip">WorkManager</span>
+            <span class="meta-chip">Room</span>
+          </div>
         </a>
       </div>
     </section>
@@ -131,7 +157,23 @@
 
     <footer class="site-footer">
       Made with ❤️ by <a href="https://github.com/Hcmdz">HcmDZ</a>
+      <br><span class="home-footer-note">Built with Kotlin, coffee, and field-grade paranoia.</span>
     </footer>
   </main>
+  <script>
+  (function () {
+    var el = document.getElementById("home-typing");
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var words = ["code()", "learn()", "build()", "ship()"];
+    var wi = 0, ci = 6, del = false;
+    setInterval(function () {
+      var w = words[wi];
+      el.textContent = w.slice(0, ci);
+      ci += del ? -1 : 1;
+      if (!del && ci > w.length) { del = true; ci = w.length; }
+      else if (del && ci < 0) { del = false; ci = 0; wi = (wi + 1) % words.length; }
+    }, 160);
+  })();
+  </script>
 </body>
 </html>

@@ -796,3 +796,58 @@ section > h2, .section-title {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- Homepage extras (index only, shared file untouched above) ---------- */
+.home-terminal {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1rem;
+  color: var(--accent-strong);
+  margin: 0.5rem 0 0;
+  min-height: 1.5em;
+}
+
+.home-caret { animation: home-blink 1s steps(1) infinite; }
+
+@keyframes home-blink { 50% { opacity: 0; } }
+
+.home-stack { margin-top: 0.6rem; }
+
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
+.home-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.home-stat strong { font-size: 1.25rem; }
+.home-stat span { color: var(--text-muted); font-size: 0.85rem; }
+.home-stat img { display: block; }
+
+.home-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.home-card-meta img { display: block; }
+
+.home-footer-note { color: var(--text-muted); font-size: 0.85rem; }
+
+@media (max-width: 480px) {
+  .home-stats { grid-template-columns: repeat(2, 1fr); }
+}
