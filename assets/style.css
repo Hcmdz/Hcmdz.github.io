@@ -430,7 +430,7 @@ section > h2, .section-title {
 }
 
 /* ---------- Screenshots ---------- */
-.screenshot-section { margin-top: 2.5rem; }
+.screenshot-section { margin-top: 2.5rem; margin-bottom: 2.5rem; }
 
 .screenshot-grid {
   display: grid;
