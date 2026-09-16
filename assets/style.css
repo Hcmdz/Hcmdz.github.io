@@ -286,6 +286,8 @@ a:hover { text-decoration: underline; }
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
 }
 
+.content-card + .content-card { margin-top: 1.25rem; }
+
 .content-card:hover {
   border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
   background: color-mix(in srgb, var(--surface) 96%, var(--accent-soft));
