@@ -1,0 +1,21 @@
+# HcmDZ — Android Developer
+
+> Native Android apps (Kotlin, Jetpack Compose, Material 3). English, French, Arabic with RTL support.
+
+## Apps
+
+- [ElecPilot](https://hcmdz.github.io/elecpilot/) — motor starters and PLC I/O manager. Offline-first, encrypted cloud backup, Excel/CSV.
+  Source and releases: <https://github.com/Hcmdz/ElecPilot>
+- [OpenCode Free Radar](https://hcmdz.github.io/opencode-free-radar/) — tracks AI models free to use with OpenCode, with freebie alerts.
+  Source and releases: <https://github.com/Hcmdz/OpenCode-Free-Radar>
+- [Privnum](https://hcmdz.github.io/Privnum/) — private on-device caller ID. Zero network permissions, VCF backup.
+  Source and releases: <https://github.com/Hcmdz/Privnum>
+
+## Site
+
+- Home: <https://hcmdz.github.io/>
+- Privacy and terms live next to each project page (for example <https://hcmdz.github.io/Privnum/privacy/>).
+- License: GPL-3.0 for apps, MIT for this site.
+- Contact: <https://github.com/Hcmdz>
+
+_Last updated: 2026-09-24_

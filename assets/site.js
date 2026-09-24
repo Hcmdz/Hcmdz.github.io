@@ -82,10 +82,10 @@
     });
   }
 
-  /* ---- Lazy-load heavy images ---- */
+  /* ---- Lazy-load heavy images (hero .app-logo stays eager LCP) ---- */
   Array.prototype.forEach.call(
     document.querySelectorAll(
-      ".screenshot-button img, .card-logo, .app-logo, .avatar"
+      ".screenshot-button img, .card-logo, .avatar"
     ),
     function (img) {
       img.setAttribute("loading", "lazy");
