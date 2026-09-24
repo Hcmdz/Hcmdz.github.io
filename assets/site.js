@@ -1,6 +1,58 @@
 (function () {
   "use strict";
 
+  /* ---- Shared site nav: single source of truth ---- */
+  // ponytail: static HTML stays the no-JS/SEO fallback, this only re-syncs it
+  var SITE_APPS = [
+    { label: "ElecPilot", slug: "elecpilot" },
+    { label: "OpenCode Free Radar", slug: "opencode-free-radar" },
+    { label: "Privnum", slug: "Privnum" }
+  ];
+
+  function currentSlug() {
+    var m = window.location.pathname.match(/^\/([^\/]+)\/?/);
+    return m ? m[1] : "";
+  }
+
+  function syncSiteNav() {
+    var slug = currentSlug();
+    var isAppPage = SITE_APPS.some(function (a) { return a.slug === slug; });
+    if (!isAppPage) return;
+    syncNav(document.querySelector("nav.desktop-site-nav"), false, slug);
+    syncNav(document.querySelector("nav.mobile-menu-links"), true, slug);
+  }
+
+  function syncNav(nav, mobile, slug) {
+    if (!nav) return;
+    var kids = Array.prototype.slice.call(nav.children);
+    if (!kids.length) return;
+    var tailIndex = kids.findIndex(function (el) {
+      var href = el.getAttribute("href") || "";
+      return href.charAt(0) === "#" || href.indexOf("github.com") !== -1;
+    });
+    if (tailIndex === -1) return;
+    for (var i = tailIndex - 1; i >= 1; i--) nav.removeChild(kids[i]);
+    var home = nav.children[0];
+    SITE_APPS.forEach(function (app) {
+      var el;
+      if (app.slug === slug) {
+        el = document.createElement("span");
+        if (!mobile) el.className = "pill primary";
+        el.setAttribute("aria-current", "page");
+        el.textContent = app.label;
+      } else {
+        el = document.createElement("a");
+        if (!mobile) el.className = "pill";
+        el.setAttribute("href", "../" + app.slug + "/");
+        el.textContent = app.label;
+      }
+      nav.insertBefore(el, home.nextSibling);
+      home = el;
+    });
+  }
+
+  syncSiteNav();
+
   /* ---- Mobile menu: close on outside click or Escape ---- */
   var mobileMenus = Array.prototype.slice.call(
     document.querySelectorAll(".mobile-site-menu")
