@@ -65,6 +65,36 @@ body.theme-elecpilot {
   }
 }
 
+/* Privnum project theme (teal identity, inherits the site palette) */
+body.theme-privnum {
+  --bg: #f2f7f7;
+  --bg-soft: #e6f0ef;
+  --surface: #ffffff;
+  --surface-soft: #dcecea;
+  --text: #0d1a1c;
+  --text-muted: #41656b;
+  --accent: #00897b;
+  --accent-strong: #00695c;
+  --accent-soft: #d2f0ec;
+  --border: #d0e4e1;
+  --shadow: 0 6px 24px rgba(13, 60, 56, 0.08);
+  --shadow-lg: 0 12px 40px rgba(13, 60, 56, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  body.theme-privnum {
+    --bg: #0a1416;
+    --surface: #122023;
+    --surface-soft: #162b2e;
+    --text: #e2f2f0;
+    --text-muted: #9bbbc0;
+    --accent: #53c5b8;
+    --accent-strong: #7fe0d4;
+    --accent-soft: #0d2b28;
+    --border: #203639;
+  }
+}
+
 /* OpenCode Free Radar project theme (radar-green identity, inherits the site palette) */
 body.theme-ofr {
   --bg: #f2f6f2;
