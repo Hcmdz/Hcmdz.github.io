@@ -1,0 +1,79 @@
+name: sync-versions
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: sync-versions
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Sync hero version pills from latest GitHub releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'EOF'
+          import json, re, subprocess, urllib.request
+
+          MAP = {
+              "ElecPilot": "elecpilot/index.html",
+              "OpenCode-Free-Radar": "opencode-free-radar/index.html",
+              "Privnum": "Privnum/index.html",
+          }
+
+          def latest(repo):
+              import os
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/Hcmdz/{repo}/releases/latest",
+                  headers={
+                      "Accept": "application/vnd.github+json",
+                      "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+                      "X-GitHub-Api-Version": "2022-11-28",
+                  },
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      return json.load(r)["tag_name"]
+              except Exception as e:
+                  print(f"::warning::no usable release for {repo}: {e}")
+                  return None
+
+          changed = []
+          for repo, path in MAP.items():
+              tag = latest(repo)
+              if not tag:
+                  continue
+              want = tag if tag.startswith("v") else f"v{tag}"
+              p = open(path).read()
+              new, n = re.subn(r"v[\d.]+ ·", want + " ·", p, count=1)
+              if n != 1:
+                  print(f"::warning::{path}: version pill pattern not found")
+                  continue
+              if new != p:
+                  open(path, "w").write(new)
+                  changed.append(f"{repo} -> {want}")
+              else:
+                  print(f"{repo} already at {want}")
+
+          print("CHANGED:", changed if changed else "none")
+          open("/tmp/sync_changed.txt", "w").write("\n".join(changed))
+          EOF
+          if [ -s /tmp/sync_changed.txt ]; then
+            cat /tmp/sync_changed.txt
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add elecpilot/index.html opencode-free-radar/index.html Privnum/index.html
+            git diff --cached --quiet && echo "nothing to commit" && exit 0
+            git commit -m "chore(site): sync hero version pills from latest releases"
+            git push
+          else
+            echo "versions already in sync"
+          fi
