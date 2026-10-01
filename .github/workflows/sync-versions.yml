@@ -76,7 +76,10 @@ jobs:
           for repo, path in MAP.items():
               subprocess.run(["git", "add", path], check=True)
           subprocess.run(["git", "commit", "-m", "chore(site): sync hero version pills from latest releases"], check=True)
-          subprocess.run(["git", "push", "--force-with-lease", "origin", BRANCH], check=True)
+          # Plain force: the branch is scratch space owned by this job alone, and
+          # the intent is to reset it to main plus the new pills. A lease needs a
+          # known remote state, which a fresh checkout does not have.
+          subprocess.run(["git", "push", "--force", "origin", BRANCH], check=True)
 
           summary = (
               "Nightly sync of the hero version pills from the latest GitHub releases.\n\n"
