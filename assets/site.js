@@ -28,7 +28,10 @@
     if (!kids.length) return;
     var tailIndex = kids.findIndex(function (el) {
       var href = el.getAttribute("href") || "";
-      return href.charAt(0) === "#" || href.indexOf("github.com") !== -1;
+      if (href.charAt(0) === "#") return true;
+      // hostname, not substring: "github.com" as a substring also matches
+      // https://github.com.evil.example/ and https://evil.example/github.com
+      return new URL(href, window.location.href).hostname === "github.com";
     });
     if (tailIndex === -1) return;
     for (var i = tailIndex - 1; i >= 1; i--) nav.removeChild(kids[i]);
