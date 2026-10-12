@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/social-preview.jpg" alt="HcmDZ" width="640">
+</p>
+
 # HcmDZ — portfolio site
 
 Static portfolio for the `Hcmdz` GitHub account, one page per Android app.
