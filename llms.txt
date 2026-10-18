@@ -4,7 +4,7 @@
 
 ## Apps
 
-- [ElecPilot](https://hcmdz.github.io/elecpilot/) — motor starters and PLC I/O manager. Offline-first, encrypted cloud backup, Excel/CSV.
+- [ElecPilot](https://hcmdz.github.io/elecpilot/) — motor starters and PLC I/O manager. Offline-first, local backup, Excel/CSV.
   Source and releases: <https://github.com/Hcmdz/ElecPilot>
 - [OpenCode Free Radar](https://hcmdz.github.io/opencode-free-radar/) — tracks AI models free to use with OpenCode, with freebie alerts.
   Source and releases: <https://github.com/Hcmdz/OpenCode-Free-Radar>
