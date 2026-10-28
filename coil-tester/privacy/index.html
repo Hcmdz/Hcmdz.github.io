@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — CoilTester</title>
+  <meta name="description" content="Privacy policy for CoilTester: fully offline, no data collection.">
+  <link rel="stylesheet" href="../../assets/style.css?v=12">
+</head>
+<body class="theme-coiltester">
+  <main class="site-shell">
+    <nav class="nav page-nav desktop-site-nav" aria-label="Site">
+      <a class="pill" href="../../">Home</a>
+      <a class="pill" href="../">CoilTester</a>
+      <span class="pill primary" aria-current="page">Privacy</span>
+    </nav>
+    <section class="content-card">
+      <h1>Privacy Policy — CoilTester</h1>
+      <p><strong>Last updated:</strong> 2026-10-28</p>
+      <p>CoilTester is a fully offline Android application. It does not collect, transmit, store, or share any personal data. There are no user accounts, no analytics, no advertising SDKs, and no network requests.</p>
+      <h2>Data handled on device</h2>
+      <ul>
+        <li>Sensor readings (magnetometer) are processed in memory and never persisted beyond the current session.</li>
+        <li>Settings (sensitivity, language, theme, thresholds, calibration) are stored locally in a DataStore on the device and never leave it.</li>
+        <li>Calibration data is stored locally and can be reset from Settings.</li>
+      </ul>
+      <h2>Permissions</h2>
+      <ul>
+        <li>BODY_SENSORS / HIGH_SAMPLING_RATE_SENSORS — magnetometer access.</li>
+        <li>VIBRATE — haptic feedback.</li>
+        <li>WAKE_LOCK — keep screen awake during detection.</li>
+        <li>FOREGROUND_SERVICE / FOREGROUND_SERVICE_SENSOR — foreground sensor service.</li>
+      </ul>
+      <p>No INTERNET permission is requested. The app cannot make network requests.</p>
+      <h2>Third parties</h2>
+      <p>No third-party SDKs that collect data are included.</p>
+      <h2>Backup</h2>
+      <p>allowBackup is set to false. The Room database and DataStore preferences are excluded from Android backup.</p>
+      <h2>Contact</h2>
+      <p>Report privacy questions via GitHub Issues: <a href="https://github.com/Hcmdz/Coil-Tester/issues">github.com/Hcmdz/Coil-Tester/issues</a></p>
+    </section>
+    <footer class="site-footer">Made with ❤️ by <a href="../../">HcmDZ</a></footer>
+  </main>
+</body>
+</html>

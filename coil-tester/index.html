@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f8ff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c1220">
+  <title>CoilTester — AC/DC Coil Detection App for Android</title>
+  <meta name="description" content="CoilTester — turn your phone's magnetometer into a calibrated AC/DC coil-testing instrument. Real-time readings, haptic and audio feedback, offline, GPL-3.0.">
+  <meta name="author" content="HcmDZ">
+  <link rel="canonical" href="https://Hcmdz.github.io/coil-tester/">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HcmDZ">
+  <meta property="og:title" content="CoilTester — AC/DC Coil Detection App for Android">
+  <meta property="og:description" content="Turn your phone's magnetometer into a calibrated AC/DC coil-testing instrument. Offline, no account, no tracking.">
+  <meta property="og:url" content="https://Hcmdz.github.io/coil-tester/">
+  <meta property="og:image" content="https://Hcmdz.github.io/coil-tester/og.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="CoilTester — AC/DC coil detection for Android">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoilTester">
+  <meta name="twitter:description" content="Turn your phone's magnetometer into a calibrated AC/DC coil-testing instrument.">
+  <meta name="twitter:image" content="https://Hcmdz.github.io/coil-tester/og.png">
+  <link rel="stylesheet" href="../assets/style.css?v=12">
+  <script src="../assets/site.js?v=4" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CoilTester",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Android",
+      "description": "AC/DC coil detection via the device magnetometer, with real-time readings, haptic and audio feedback, and calibration.",
+      "url": "https://Hcmdz.github.io/coil-tester/",
+      "image": "https://Hcmdz.github.io/coil-tester/logo.png",
+      "author": {
+        "@type": "Person",
+        "name": "HcmDZ",
+        "url": "https://Hcmdz.github.io/"
+      }
+    }
+  </script>
+</head>
+<body class="theme-coiltester">
+  <main class="site-shell">
+    <nav class="nav page-nav desktop-site-nav" aria-label="Site">
+      <a class="pill" href="../">Home</a>
+      <span class="pill primary" aria-current="page">CoilTester</span>
+      <a class="pill" href="../elecpilot/">ElecPilot</a>
+      <a class="pill" href="../opencode-free-radar/">OpenCode Free Radar</a>
+      <a class="pill" href="../Privnum/">Privnum</a>
+      <a class="pill" href="#features">Features</a>
+      <a class="pill" href="#screenshots-title">Screens</a>
+      <a class="pill" href="https://github.com/Hcmdz/Coil-Tester" target="_blank" rel="noopener">GitHub</a>
+      <a class="pill" href="https://github.com/Hcmdz/Coil-Tester/issues" target="_blank" rel="noopener">Issues</a>
+    </nav>
+    <details class="mobile-site-menu">
+      <summary aria-label="Open site navigation">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </summary>
+      <div class="mobile-menu-panel">
+        <nav class="mobile-menu-links" aria-label="Site menu">
+          <a href="../">Home</a>
+          <span aria-current="page">CoilTester</span>
+          <a href="../elecpilot/">ElecPilot</a>
+          <a href="../opencode-free-radar/">OpenCode Free Radar</a>
+          <a href="../Privnum/">Privnum</a>
+          <a href="#features">Features</a>
+          <a href="#screenshots-title">Screens</a>
+          <a href="https://github.com/Hcmdz/Coil-Tester" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/Hcmdz/Coil-Tester/issues" target="_blank" rel="noopener">Issues</a>
+        </nav>
+      </div>
+    </details>
+
+    <section class="hero project-hero">
+      <div class="hero-media">
+        <img class="app-logo" src="logo.png" fetchpriority="high" width="192" height="192" alt="CoilTester app logo" loading="eager" decoding="async">
+        <nav class="nav" aria-label="CoilTester links">
+          <a class="pill primary" href="https://github.com/Hcmdz/Coil-Tester" target="_blank" rel="noopener"><img class="pill-icon" src="../assets/fav_github.png" alt="" aria-hidden="true">GitHub</a>
+          <a class="pill secondary-strong" href="https://github.com/Hcmdz/Coil-Tester/releases/latest" target="_blank" rel="noopener"><img class="pill-icon" src="../assets/fav_github.png" alt="" aria-hidden="true">Releases</a>
+          <a class="pill" href="https://hcmdz.github.io/coil-tester/privacy/" target="_blank" rel="noopener">Privacy</a>
+          <a class="pill" href="https://hcmdz.github.io/coil-tester/terms/" target="_blank" rel="noopener">Terms</a>
+          <a class="pill" href="https://github.com/Hcmdz/Coil-Tester/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+        </nav>
+      </div>
+      <div class="hero-copy">
+        <h1>CoilTester</h1>
+        <div class="home-badge-row"><span class="card-badge">v1.0.0 · GPL-3.0</span> <span class="card-badge">Stable</span></div>
+        <div class="chip-row" aria-label="Platforms">
+          <span class="meta-chip">Android</span>
+          <span class="meta-chip">Kotlin</span>
+          <span class="meta-chip">MinSDK 24</span>
+          <span class="meta-chip">TargetSDK 35</span>
+        </div>
+        <p class="lede">
+          Turn your phone's magnetometer into a calibrated AC/DC coil-testing instrument.
+        </p>
+        <section class="content-card">
+          <h2>Why It Exists</h2>
+          <p>
+            Testing solenoid coils in the field usually means carrying dedicated equipment. CoilTester puts a
+            calibrated AC/DC magnetic-field detector in your pocket — real-time readings, instant haptic and audio
+            feedback, and a guided distance target — so you can verify coil operation anywhere, fully offline.
+          </p>
+        </section>
+      </div>
+    </section>
+
+    <div class="home-marquee" aria-label="Integrations">
+      <div class="home-marquee-track">
+        <span class="meta-chip">Magnetometer</span>
+        <span class="meta-chip">AC/DC</span>
+        <span class="meta-chip">Offline-first</span>
+        <span class="meta-chip">Material You</span>
+        <span class="meta-chip">EN / FR / AR</span>
+        <span class="meta-chip">Magnetometer</span>
+        <span class="meta-chip">AC/DC</span>
+        <span class="meta-chip">Offline-first</span>
+        <span class="meta-chip">Material You</span>
+        <span class="meta-chip">EN / FR / AR</span>
+        <span class="meta-chip">Magnetometer</span>
+        <span class="meta-chip">AC/DC</span>
+        <span class="meta-chip">Offline-first</span>
+        <span class="meta-chip">Material You</span>
+        <span class="meta-chip">EN / FR / AR</span>
+        <span class="home-marquee-dup" aria-hidden="true">
+          <span class="meta-chip">Magnetometer</span>
+          <span class="meta-chip">AC/DC</span>
+          <span class="meta-chip">Offline-first</span>
+          <span class="meta-chip">Material You</span>
+          <span class="meta-chip">EN / FR / AR</span>
+          <span class="meta-chip">Magnetometer</span>
+          <span class="meta-chip">AC/DC</span>
+          <span class="meta-chip">Offline-first</span>
+          <span class="meta-chip">Material You</span>
+          <span class="meta-chip">EN / FR / AR</span>
+          <span class="meta-chip">Magnetometer</span>
+          <span class="meta-chip">AC/DC</span>
+          <span class="meta-chip">Offline-first</span>
+          <span class="meta-chip">Material You</span>
+          <span class="meta-chip">EN / FR / AR</span>
+        </span>
+      </div>
+    </div>
+
+    <section class="feature-grid" id="features" aria-label="CoilTester features">
+      <article class="feature-card">
+        <h3>AC/DC Detection</h3>
+        <p>Real-time magnetic field readings with configurable sensitivity (Low / Medium / High).</p>
+      </article>
+      <article class="feature-card">
+        <h3>Haptic &amp; Audio</h3>
+        <p>Instant feedback on detection, with adjustable volume and vibration.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Calibration</h3>
+        <p>Stored offset/scale data with a one-tap reset option.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Distance Guide</h3>
+        <p>10 cm target to position the sensor over the coil.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Advanced Options</h3>
+        <p>Custom AC/DC thresholds and mains frequency band (50 / 60 Hz).</p>
+      </article>
+      <article class="feature-card">
+        <h3>Material You</h3>
+        <p>Dynamic color, edge-to-edge layout, light / dark / pure-black (AMOLED) themes.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Multilingual</h3>
+        <p>English, French, and Arabic localization with full RTL support.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Security</h3>
+        <p>FLAG_SECURE, cleartext blocked, app backups disabled, ProGuard log stripping.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Offline-first</h3>
+        <p>No INTERNET permission, no accounts, no tracking.</p>
+      </article>
+    </section>
+
+    <div class="read-more-row">
+      <a class="pill read-more-button" href="https://github.com/Hcmdz/Coil-Tester/blob/main/README.md" target="_blank" rel="noopener"><img class="pill-icon" src="../assets/fav_github.png" alt="" aria-hidden="true">View full README<span aria-hidden="true">→</span></a>
+    </div>
+
+    <section class="screenshot-section" aria-labelledby="screenshots-title">
+      <h2 id="screenshots-title">Screenshots</h2>
+      <div class="screenshot-grid freeform app-screenshot-grid">
+        <figure class="screenshot-card">
+          <button class="screenshot-button">
+            <img src="screenshots/detection-light.jpg" alt="Detection screen — light mode" loading="lazy" decoding="async" width="1080" height="2400">
+          </button>
+          <figcaption>Detection — light</figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <button class="screenshot-button">
+            <img src="screenshots/detection-dark.jpg" alt="Detection screen — dark mode" loading="lazy" decoding="async" width="1080" height="2400">
+          </button>
+          <figcaption>Detection — dark</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="content-card" aria-labelledby="outcome-title">
+      <h2 id="outcome-title">Outcome</h2>
+      <ul>
+        <li><strong>Real-time AC/DC readings</strong> — magnetometer sampled and displayed live.</li>
+        <li><strong>Instant feedback</strong> — haptic and audio cues the moment a coil is detected.</li>
+        <li><strong>Calibration</strong> — stored offset/scale with one-tap reset.</li>
+      </ul>
+    </section>
+
+    <section class="content-card" aria-labelledby="oss-title">
+      <h2 id="oss-title">Free &amp; open source</h2>
+      <p>
+        GPL-3.0, full source on GitHub — read it, build it, verify what runs on your device.
+        <a href="https://github.com/Hcmdz/Coil-Tester" target="_blank" rel="noopener">Explore the code</a>
+      </p>
+    </section>
+
+    <section class="content-card" aria-labelledby="get-title">
+      <h2 id="get-title">Get CoilTester</h2>
+      <p>
+        Free download, no account.
+        <a class="pill primary" href="https://github.com/Hcmdz/Coil-Tester/releases/latest" target="_blank" rel="noopener">Download latest release</a>
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      Made with ❤️ by <a href="../">HcmDZ</a>
+    </footer>
+  </main>
+</body>
+</html>
