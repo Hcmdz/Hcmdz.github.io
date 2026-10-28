@@ -1,45 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy — CoilTester</title>
-  <meta name="description" content="Privacy policy for CoilTester: fully offline, no data collection.">
-  <link rel="stylesheet" href="../../assets/style.css?v=12">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - CoilTester</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { background: #1a1a2e; color: white; padding: 40px 20px; text-align: center; }
+        header h1 { font-size: 28px; margin-bottom: 8px; }
+        header p { opacity: 0.8; font-size: 14px; }
+        nav { background: #16213e; padding: 12px 20px; }
+        nav ul { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        nav a { color: #a8d8ea; text-decoration: none; font-size: 13px; }
+        nav a:hover { color: white; }
+        main { background: white; padding: 40px 30px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h2 { color: #1a1a2e; margin: 30px 0 12px; font-size: 20px; border-bottom: 2px solid #e8e8e8; padding-bottom: 8px; }
+        h2:first-child { margin-top: 0; }
+        p, li { font-size: 15px; color: #444; margin-bottom: 10px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 6px; }
+        .highlight { background: #f0f7ff; padding: 16px; border-radius: 6px; border-left: 4px solid #1a73e8; margin: 16px 0; }
+        .highlight p { margin-bottom: 0; }
+        footer { text-align: center; padding: 30px; color: #888; font-size: 13px; }
+        footer a { color: #1a73e8; text-decoration: none; }
+        a { color: #1a73e8; }
+        @media (max-width: 600px) { main { padding: 20px 16px; } header { padding: 30px 16px; } }
+    </style>
 </head>
-<body class="theme-coiltester">
-  <main class="site-shell">
-    <nav class="nav page-nav desktop-site-nav" aria-label="Site">
-      <a class="pill" href="../../">Home</a>
-      <a class="pill" href="../">CoilTester</a>
-      <span class="pill primary" aria-current="page">Privacy</span>
+<body>
+    <header>
+        <h1>Privacy Policy</h1>
+        <p>Last updated: October 28, 2026 &middot; for App: CoilTester</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#data-stored">Data Stored</a></li>
+            <li><a href="#permissions">Permissions</a></li>
+            <li><a href="#third-party">Third-Party</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#rights">Your Rights</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-    <section class="content-card">
-      <h1>Privacy Policy — CoilTester</h1>
-      <p><strong>Last updated:</strong> 2026-10-28</p>
-      <p>CoilTester is a fully offline Android application. It does not collect, transmit, store, or share any personal data. There are no user accounts, no analytics, no advertising SDKs, and no network requests.</p>
-      <h2>Data handled on device</h2>
-      <ul>
-        <li>Sensor readings (magnetometer) are processed in memory and never persisted beyond the current session.</li>
-        <li>Settings (sensitivity, language, theme, thresholds, calibration) are stored locally in a DataStore on the device and never leave it.</li>
-        <li>Calibration data is stored locally and can be reset from Settings.</li>
-      </ul>
-      <h2>Permissions</h2>
-      <ul>
-        <li>BODY_SENSORS / HIGH_SAMPLING_RATE_SENSORS — magnetometer access.</li>
-        <li>VIBRATE — haptic feedback.</li>
-        <li>WAKE_LOCK — keep screen awake during detection.</li>
-        <li>FOREGROUND_SERVICE / FOREGROUND_SERVICE_SENSOR — foreground sensor service.</li>
-      </ul>
-      <p>No INTERNET permission is requested. The app cannot make network requests.</p>
-      <h2>Third parties</h2>
-      <p>No third-party SDKs that collect data are included.</p>
-      <h2>Backup</h2>
-      <p>allowBackup is set to false. The Room database and DataStore preferences are excluded from Android backup.</p>
-      <h2>Contact</h2>
-      <p>Report privacy questions via GitHub Issues: <a href="https://github.com/Hcmdz/Coil-Tester/issues">github.com/Hcmdz/Coil-Tester/issues</a></p>
-    </section>
-    <footer class="site-footer">Made with ❤️ by <a href="../../">HcmDZ</a></footer>
-  </main>
+    <main>
+        <div class="container">
+            <section id="summary">
+                <h2>Summary</h2>
+                <div class="highlight">
+                    <p><strong>CoilTester is designed to work entirely on your device.</strong> The developer collects no analytics, runs no ads, and operates no server. Your data stays on your device.</p>
+                </div>
+            </section>
+
+            <section id="data-stored">
+                <h2>Data Stored on Your Device</h2>
+                <p>CoilTester stores the following data locally in app-private storage on your device:</p>
+                <ul>
+                    <li><strong>Settings</strong> &mdash; sensitivity, language, theme, thresholds, and calibration data</li>
+                    <li><strong>Calibration data</strong> &mdash; stored offset/scale values, resettable from Settings</li>
+                </ul>
+                <p>Sensor readings (magnetometer) are processed in memory and never persisted beyond the current session. None of this data is sent to the developer or any external server.</p>
+            </section>
+
+            <section id="permissions">
+                <h2>Permissions</h2>
+                <p>CoilTester requests the following permissions:</p>
+                <ul>
+                    <li><strong>BODY_SENSORS / HIGH_SAMPLING_RATE_SENSORS</strong> &mdash; magnetometer access</li>
+                    <li><strong>VIBRATE</strong> &mdash; haptic feedback on detection</li>
+                    <li><strong>WAKE_LOCK</strong> &mdash; keep screen awake during detection</li>
+                    <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_SENSOR</strong> &mdash; foreground sensor service</li>
+                </ul>
+                <p>The app does not request the INTERNET permission and cannot make network requests. It does not request access to your camera, contacts, location, or any other sensitive data.</p>
+            </section>
+
+            <section id="third-party">
+                <h2>Third-Party Services</h2>
+                <p>No third-party SDKs, analytics, advertising, or tracking services are integrated in CoilTester. Code libraries bundled with the app are listed in <a href="https://github.com/Hcmdz/Coil-Tester/blob/main/THIRD_PARTY.md" target="_blank">THIRD_PARTY.md</a>. The developer operates no server.</p>
+            </section>
+
+            <section id="security">
+                <h2>Security</h2>
+                <ul>
+                    <li>All data is stored locally in your device's app-private storage</li>
+                    <li>No data is transmitted to the developer's servers (the developer operates no servers)</li>
+                    <li>Network security configuration blocks cleartext (HTTP) traffic to every host</li>
+                    <li>allowBackup is set to false, so app data cannot be extracted via ADB backup</li>
+                    <li>FLAG_SECURE is enabled on the detection screen to prevent screenshots and screen recording</li>
+                    <li>Release builds are minified and strip all log calls</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>No Analytics or Tracking</h2>
+                <p>CoilTester does not include analytics, advertising, crash-reporting, or telemetry SDKs. The developer does not receive information about how you use the app.</p>
+            </section>
+
+            <section id="rights">
+                <h2>Your Rights</h2>
+                <p>You have full control over your data:</p>
+                <ul>
+                    <li><strong>Access</strong> &mdash; all your data is visible within the app</li>
+                    <li><strong>Deletion</strong> &mdash; reset calibration from Settings, or uninstall the app to remove all data</li>
+                </ul>
+                <p>Since everything is stored locally on your device, the developer has no access to your data and cannot delete it on your behalf &mdash; you manage it directly through the app or by uninstalling.</p>
+            </section>
+
+            <section>
+                <h2>Children</h2>
+                <p>The app is not directed at children under 13, and the developer does not operate any service that collects personal information from children.</p>
+            </section>
+
+            <section>
+                <h2>Changes to This Policy</h2>
+                <p>This policy may be updated from time to time. The latest version will be published on this page.</p>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>For privacy questions about CoilTester, use the <a href="https://github.com/Hcmdz/Coil-Tester/issues" target="_blank">GitHub project</a>.</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 HcmDZ &middot; CoilTester &middot; <a href="../terms/">Terms of Service</a></p>
+    </footer>
 </body>
 </html>
+EOF
+echo done
